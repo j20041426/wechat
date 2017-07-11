@@ -17,7 +17,7 @@ import userinfo from './component/contact/userinfo.vue';
 import login from './component/login.vue';
 
 import VueSocketio from 'vue-socket.io';
-Vue.use(VueSocketio, 'http://localhost:9999');
+Vue.use(VueSocketio, 'http://app-hqqsk5cknw2ke29.leanapp.cn:9999');
 
 const router = new VueRouter({
   routes: [
