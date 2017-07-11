@@ -124,7 +124,7 @@
         this.$router.push('/index/message/'+session.sessionId);
       },
       getSessions () {
-        this.$http.post('http://localhost:3000/session/getSessions',{userId:sessionStorage.userId}).then((result)=>{
+        this.$http.post('http://app-hqqsk5cknw2ke29.leanapp.cn/session/getSessions',{userId:sessionStorage.userId}).then((result)=>{
           this.$data.sessions = result.body.data;
         });
       },
@@ -144,6 +144,11 @@
         }else{
           return '';
         }
+      }
+    },
+    sockets:{
+      refresh: function(){
+        this.getSessions();
       }
     },
     mounted () {

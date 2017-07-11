@@ -56,13 +56,13 @@
     },
     methods: {
       getContactInfo () {
-        this.$http.post('http://localhost:3000/contact/getContactInfo',{userId:this.getUserId}).then((result)=>{
+        this.$http.post('http://app-hqqsk5cknw2ke29.leanapp.cn/contact/getContactInfo',{userId:this.getUserId}).then((result)=>{
           this.name = result.body.data.name;
           this.headimg = result.body.data.headimg;
         });
       },
       sendMsg () {
-        this.$http.post('http://localhost:3000/contact/sendMsg',{me:sessionStorage.userId,userId:this.getUserId}).then((result)=>{
+        this.$http.post('http://app-hqqsk5cknw2ke29.leanapp.cn/contact/sendMsg',{me:sessionStorage.userId,userId:this.getUserId}).then((result)=>{
           this.$router.push('/index/message/'+result.body.data);
         });
       }

@@ -78,7 +78,7 @@
  		 },
  		 methods: {
  		   getContacts () {
- 		     this.$http.post('http://localhost:3000/contact/getContacts',{userId:sessionStorage.userId}).then((result)=>{
+ 		     this.$http.post('http://app-hqqsk5cknw2ke29.leanapp.cn/contact/getContacts',{userId:sessionStorage.userId}).then((result)=>{
  		       this.$data.contacts = result.body.data;
  		     });
  		   }

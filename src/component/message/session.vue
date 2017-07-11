@@ -209,7 +209,7 @@
         this.inputMsg = '';
       },
       getSessionById() {
-        this.$http.post('http://localhost:3000/session/getSessionById', {
+        this.$http.post('http://app-hqqsk5cknw2ke29.leanapp.cn/session/getSessionById', {
           sessionId: this.sessionId
         }).then((result) => {
           console.log(result.body)

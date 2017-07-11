@@ -17,7 +17,7 @@
     methods: {
       login: function(){
         if(this.username){
-          this.$http.post('http://localhost:3000/login',{username:this.username}).then(function(data){
+          this.$http.post('http://app-hqqsk5cknw2ke29.leanapp.cn/login',{username:this.username}).then(function(data){
             var res = data.data;
             if(res.type==1){
               sessionStorage.userId = res.data.userId;
