@@ -5,9 +5,9 @@
 		</section>
 		<section>
 			<ul class="list">
-				<router-link tag="li" class="message" to="/message"></router-link>
-				<router-link tag="li" class="contact" to="/contact"></router-link>
-				<router-link tag="li" class="favorite" to="/favorite"></router-link>
+				<router-link tag="li" class="message" to="/index/message"></router-link>
+				<router-link tag="li" class="contact" to="/index/contact"></router-link>
+				<router-link tag="li" class="favorite" to="/index/favorite"></router-link>
 			</ul>
 		</section>
 	</div>
@@ -15,11 +15,14 @@
 
 <script type="text/javascript">
 	export default {
-  		data () {
-    			return {
-    				userPic:'src/image/user.jpg',
-   			 }
+		data () {
+			return {
+				userPic:'src/image/user.jpg',
+      }
     },
+    mounted: function(){
+      this.userPic = JSON.parse(sessionStorage.info).headimg;
+    }
 	}
 </script>
 

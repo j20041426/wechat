@@ -11,7 +11,8 @@
   "dependencies": {
     "vue": "^2.3.3",
     "vue-resource": "^1.3.4",
-    "vue-router": "^2.5.3"
+    "vue-router": "^2.5.3",
+    "vue-socket.io": "^2.1.1-a"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

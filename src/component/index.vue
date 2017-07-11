@@ -1,17 +1,24 @@
 <template>
-  <router-view>
-    
-  </router-view>
+  <div id="app">
+    <navBar></navBar>
+    <router-view>
+      
+    </router-view>
+  </div>
 </template>
 
 <script>
-import index from './component/index.vue'
+import navBar from './navBar.vue'
 
 export default {
   data () {
     return {
     }
   },
+  components:{navBar},
+  mounted () {
+    this.$socket.emit('join', sessionStorage.userId);
+  }
 }
 </script>
 

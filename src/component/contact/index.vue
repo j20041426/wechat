@@ -58,7 +58,7 @@
   		</section>
   		<section id="list">
   			<ul>
-  				<router-link tag="li" class="list-li" v-for="contact in contacts" :to="'/contact/'+contact.type+'/01'" :key="contact">
+  				<router-link tag="li" class="list-li" v-for="contact in contacts" :to="'/index/contact/'+contact.type+'/'+contact.userId" :key="contact.userId">
   					<div class="left"><img :src="contact.userIcon"></div>
   					<div class="right">{{contact.name}}</div>
   				</router-link>
@@ -73,12 +73,18 @@
 	export default {
   		data () {
     			return {
-    				contacts:[
-    					{type:'userinfo',userIcon:'src/image/user1.jpg',name:'张三'},
-    					{type:'userinfo',userIcon:'src/image/user2.jpg',name:'李四'},
-    					{type:'userinfo',userIcon:'src/image/user3.jpg',name:'周吴'}
-    				]
+    				contacts:[]
    			 }
+ 		 },
+ 		 methods: {
+ 		   getContacts () {
+ 		     this.$http.post('http://localhost:3000/contact/getContacts',{userId:sessionStorage.userId}).then((result)=>{
+ 		       this.$data.contacts = result.body.data;
+ 		     });
+ 		   }
+ 		 },
+ 		 mounted () {
+ 		   this.getContacts();
  		 }
 	}
 </script>

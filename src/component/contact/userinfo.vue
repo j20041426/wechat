@@ -9,7 +9,7 @@
         <div class="msg">呵呵</div>
       </div>
       <div class="right">
-        <img src="../../image/user.jpg">
+        <img :src="headimg">
       </div>
     </div>
     <div class="body">
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="footer">
-      <div class="send">发消息</div>
+      <div class="send" @click="sendMsg">发消息</div>
     </div>
   </div>
 </template>
@@ -40,8 +40,9 @@
   export default {
     data () {
       return {
-        name: '汤启明',
-        gender: 1,
+        name: '',
+        headimg: '../../image/user.jpg',
+        gender: 0,
         msg: '呵呵。。。',
         note: '点击添加备注',
         area: {
@@ -53,8 +54,31 @@
         source: '通过群聊添加'
       }
     },
+    methods: {
+      getContactInfo () {
+        this.$http.post('http://localhost:3000/contact/getContactInfo',{userId:this.getUserId}).then((result)=>{
+          this.name = result.body.data.name;
+          this.headimg = result.body.data.headimg;
+        });
+      },
+      sendMsg () {
+        this.$http.post('http://localhost:3000/contact/sendMsg',{me:sessionStorage.userId,userId:this.getUserId}).then((result)=>{
+          this.$router.push('/index/message/'+result.body.data);
+        });
+      }
+    },
     mounted: function(){
-      console.log(this.$route.params);
+      this.getContactInfo();
+    },
+    computed: {
+      getUserId () {
+        return this.$route.params.userId;
+      }
+    },
+    watch: {
+      getUserId () {
+        this.getContactInfo();
+      }
     }
   }
 </script>
